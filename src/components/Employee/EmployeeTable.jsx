@@ -1,12 +1,15 @@
 "use client";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import Filter from "./Filter";
+import Loader from "../Loader";
 
 import useDebounce from "@/hooks/useDebounce";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchEmployees } from "@/store/slices/employeeSlice";
 
 const employeeCols = [
     "ID",
@@ -18,12 +21,23 @@ const employeeCols = [
     "Actions",
 ];
 
-const EmployeeTable = ({ employees }) => {
+const EmployeeTable = () => {
+    const employees = useSelector((state) => state.employees.list);
+    const employeeStatus = useSelector((state) => state.employees.status)
+
+    const dispatch = useDispatch();
+
     const [filterOptions, setFilterOptions] = useState({
         name: "",
         email: "",
         phone: "",
     });
+
+    useEffect(() => {
+        if (employeeStatus === 'idle') {
+            dispatch(fetchEmployees());
+        }
+    }, [employeeStatus, dispatch]);
 
     const debouncedFilterOptions = {
         name: useDebounce(filterOptions.name, 300),
@@ -58,7 +72,12 @@ const EmployeeTable = ({ employees }) => {
                     .includes(debouncedFilterOptions.phone.toLowerCase()))
     );
 
-    console.log("FILTER");
+
+    if (employees.length <= 0) {
+        return <div className='min-w-full h-full min-h-96 flex justify-center items-center'>
+            <Loader />
+        </div>
+    }
 
     return (
         <div className="overflow-hidden  w-full">
@@ -74,8 +93,8 @@ const EmployeeTable = ({ employees }) => {
             <div className="overflow-x-auto w-full">
                 <table className="min-w-full divide-y divide-gray-200">
                     <TableHeader columns={employeeCols} />
-                    {filteredEmployees?.map((employee, i) => (
-                        <TableRow key={employee.employee_id + i} employee={employee} />
+                    {filteredEmployees?.map((employee) => (
+                        <TableRow key={employee.employee_id} employee={employee} />
                     ))}
                 </table>
             </div>

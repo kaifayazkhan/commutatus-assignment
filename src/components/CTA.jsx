@@ -3,8 +3,9 @@ import React from 'react'
 const variants = {
     primary: "bg-blue-500 hover:bg-blue-600 text-white",
     outline: "bg-transparent border-2 border-secondaryText text-secondaryText hover:opacity-70",
+    danger: "bg-red-500 hover:bg-red-700 text-white"
 }
-export default function CTA({ className, type = "button", title, variant, disabled, onClick }) {
+export default function CTA({ className, type = "button", title, variant = "primary", disabled, onClick }) {
     return (
         <button
             type={type}
@@ -13,6 +14,6 @@ export default function CTA({ className, type = "button", title, variant, disabl
             onClick={onClick}
         >
             {title}
-        </button >
+        </button>
     )
 }

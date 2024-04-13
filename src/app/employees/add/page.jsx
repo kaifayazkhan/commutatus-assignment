@@ -3,28 +3,32 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import toast from "react-hot-toast"
 
 import InputField from '@/components/InputField'
 import SelectOption from '@/components/SelectOption'
 
-import { employeeSchema } from '@/utils/FromSchema'
-import { departments, positions } from '@/data/employee'
-import useEmployees from '@/hooks/useEmployees'
+import { employeeSchema } from '@/utils/FormSchema'
+import { departments, positions } from '@/data/company'
 import { generateRandomID } from '@/utils/generateRandomID'
+import { useDispatch } from "react-redux";
+import { addEmployee } from '@/store/slices/employeeSlice'
 
 export default function AddEmployee() {
     const router = useRouter();
+    const dispatch = useDispatch();
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(employeeSchema)
     });
-    const { addEmployee } = useEmployees();
 
     const onSubmit = (data) => {
         const updatedData = {
             employee_id: generateRandomID(),
             ...data
         }
-        addEmployee(updatedData)
+        dispatch(addEmployee(updatedData))
+        toast.success("Employee added successfully")
         router.push('/employees');
 
     }

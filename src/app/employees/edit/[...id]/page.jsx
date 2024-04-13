@@ -3,41 +3,46 @@ import React, { useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import toast from "react-hot-toast";
+
 import InputField from '@/components/InputField';
 import SelectOption from '@/components/SelectOption';
-import { departments, positions } from '@/data/employee';
-import { employeeSchema } from '@/utils/FromSchema';
-import useEmployees from '@/hooks/useEmployees';
 import CTA from '@/components/CTA';
+
+import { departments, positions } from '@/data/company';
+import { employeeSchema } from '@/utils/FormSchema';
+import { useSelector, useDispatch } from 'react-redux';
+import { editEmployee } from "@/store/slices/employeeSlice";
 
 export default function UpdateEmployee() {
     const router = useRouter();
     const { id } = useParams();
-    const { employees, editEmployee } = useEmployees();
+    const employees = useSelector(state => state.employees.list);
+    const dispatch = useDispatch();
 
     const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
         resolver: zodResolver(employeeSchema)
     });
 
+    const newEmployee = employees.find(employee => employee.employee_id === id[0]);
     useEffect(() => {
+        if (!newEmployee) return router.replace('/employees');
         if (id[0] && employees.length > 0) {
-            const newEmployee = employees.find(employee => employee.employee_id === id[0]);
-            if (newEmployee) {
-                reset({
-                    name: newEmployee.name,
-                    email: newEmployee.email,
-                    phone: newEmployee.phone,
-                    position: newEmployee.position,
-                    department: newEmployee.department
-                });
-            }
+            reset({
+                name: newEmployee.name,
+                email: newEmployee.email,
+                phone: newEmployee.phone,
+                position: newEmployee.position,
+                department: newEmployee.department
+            });
         }
-    }, [id, employees, reset]);
+    }, [employees.length, id, newEmployee, reset, router]);
 
 
     const onSubmit = data => {
         const updatedData = { employee_id: id[0], ...data };
-        editEmployee(updatedData);
+        dispatch(editEmployee(updatedData))
+        toast.success("Employee updated successfully");
         router.push('/employees');
     };
 
