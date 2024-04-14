@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hierarchy UI - Assignment
 
-## Getting Started
+## Overview
+The Hierarchy UI assignment is a project developed to create a hierarchical user interface for managing employee hierarchy and information within a company. The project aims to implement basic functionalities such as adding, updating, and removing employees, managing teams, filtering employees, and enabling hierarchical navigation.
 
-First, run the development server:
+## Basic Functionality
+- Display: Position name with employee name.
+- Management: Add, update, and remove employees.
+- Team Operations: Create, edit, and change teams.
+- Filtering: Filter employees by name, phone number, and email.
+- Drag and Drop: Change the team of a team member within same department with drag and drop functionality
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Bonus Points Achieved
+- Preventing Duplicate Teams: Implemented validation to prevent duplicate team names.
+- Hierarchical Navigation: Enabled viewing all employees under a selected Team/Head.
+
+## Specifications
+- Frontend: Developed using Next.js.
+- UI Library: Utilized Tailwind CSS for UI.
+- State Management: Managed state using Redux Toolkit.
+- Local Storage: Stored data locally in the browser to mimic database persistence.
+- Deployment: Hosted on Vercel.
+
+
+## Tech Stack
+```
+    Next Js, TailwindCSS, Redux Toolkit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

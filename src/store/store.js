@@ -5,8 +5,8 @@ import companySlice from './slices/companySlice'
 
 export const store = configureStore({
     reducer: {
-        employees: employeeSlice,
+        company: companySlice,
         teams: teamSlice,
-        company: companySlice
+        employees: employeeSlice,
     },
 })

@@ -6,18 +6,27 @@ export const positions = [
     "SDE-3",
     "UI/UX Designer",
     "Product Designer",
-    "Product Manger",
+    "Product Manager",
     "Team Lead",
-    "Design Head",
     "HR Manager",
-    "Employee Relations Manager",
     "Head of Staff/HR",
     "Head of Design",
     "Head of Engineering",
-    "Front-end Developer",
-    "Backend Developer",
-    "DevOps Engineer",
 ].sort();
+
+export const execution = {
+    1: ["Head of Staff/HR", "Head of Design", "Head of Engineering", "Product Manager"],
+    2: ["Team Lead"],
+    3: ["SDE-1", "SDE-2", "SDE-3", "UI/UX Designer", "Product Designer", "HR Manager"],
+}
+
+export const positionsByDepartment = {
+    HR: ["HR Manager", "Head of Staff/HR", "Team Lead"],
+    Design: ["UI/UX Designer", "Product Designer", "Head of Design", "Team Lead"],
+    Engineering: ["SDE-1", "SDE-2", "SDE-3", "Team Lead", "Head of Engineering", "Product Manager"],
+}
+
+
 
 // Company structure with departments and linked team IDs
 export const company_db = {
@@ -27,21 +36,24 @@ export const company_db = {
     departments: [
         {
             id: 5335,
+            department: "HR",
             position: "Head of Staff/HR",
             employee_detail: 'luwople0oil',
-            teams: ["luwl72rp8gt", "luwly5gzv9r"],
+            teams: ["luwl72rp8gt"],
         },
         {
             id: 5336,
+            department: "Design",
             position: "Head of Design",
             employee_detail: 'luw5n12ph9x',
-            teams: ["luwnelxo29h", "luw5kqopwy1"],
+            teams: ["luwnelxo29h"],
         },
         {
             id: 5337,
+            department: "Engineering",
             position: "Head of Engineering",
             employee_detail: 'luwhk7wqflx',
-            teams: ["luwbosdm7xk", "luww6cayk13", "luwghskvp83"],
+            teams: ["luwbosdm7xk", "luww6cayk13"],
         },
     ],
 };
@@ -63,33 +75,15 @@ export const teams_db = [
     {
         id: 'luwbosdm7xk',
         name: "Engineering Frontend Team",
-        team_lead: "luwx3m4dqyv",
+        team_lead: "luw5m6574nq",
         team_members: ["luw2pu0073h", "luwrle94yht"],
     },
     {
         id: 'luww6cayk13',
         name: "Engineering DevOps Team",
-        team_lead: "luw6txp5e6m",
+        team_lead: "luw7q2le7vb",
         team_members: ["luws9u3br79"],
-    },
-    {
-        id: 'luw5kqopwy1',
-        name: "Product Design Team",
-        team_lead: "luwrhog5q89",
-        team_members: ["luwltbgb1dy", "luwieytuf58"],
-    },
-    {
-        id: 'luwghskvp83',
-        name: "Senior Engineering Team",
-        team_lead: "luwqkob8oqm", // Liam Neeson
-        team_members: ["luwt1p43lj7", "luwq5705ah0"]
-    },
-    {
-        id: 'luwly5gzv9r',
-        name: "Leadership Team",
-        team_lead: "luw4el2azps",
-        team_members: ["luw5n12ph9x"]
-    },
+    }
 ];
 
 // Employee details
@@ -101,14 +95,16 @@ export const employee_db = [
         phone: "8641070723",
         position: "Product Designer",
         department: "Design",
+        level: 3
     },
     {
         employee_id: "luwx3m4dqyv",
-        name: "John Smith",
+        name: "John Martin",
         email: "ekqug@gmail.com",
         phone: "3728059191",
-        position: "Front-end Developer",
+        position: "SDE-1",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwople0oil",
@@ -117,6 +113,7 @@ export const employee_db = [
         phone: "4882105727",
         position: "Head of Staff/HR",
         department: "HR",
+        level: 1
     },
     {
         employee_id: "luwp0lnpgwu",
@@ -125,14 +122,16 @@ export const employee_db = [
         phone: "1510030047",
         position: "HR Manager",
         department: "HR",
+        level: 3
     },
     {
         employee_id: "luw8xyi9m6d",
         name: "Harper Lee",
         email: "kxkjw@gmail.com",
         phone: "4242885444",
-        position: "Design Head",
+        position: "Team Lead",
         department: "Design",
+        level: 2
     },
     {
         employee_id: "luw5n12ph9x",
@@ -141,14 +140,7 @@ export const employee_db = [
         phone: "0190232034",
         position: "Head of Design",
         department: "Design",
-    },
-    {
-        employee_id: "luwj7o47tzh",
-        name: "Noah Webster",
-        email: "oxzzk@gmail.com",
-        phone: "6430631026",
-        position: "Team Lead",
-        department: "Engineering",
+        level: 1
     },
     {
         employee_id: "luwe8w406dl",
@@ -157,38 +149,43 @@ export const employee_db = [
         phone: "6885563190",
         position: "UI/UX Designer",
         department: "Design",
+        level: 3
     },
     {
         employee_id: "luw2pu0073h",
         name: "Andrew",
         email: "xlepj@gmail.com",
         phone: "2960246695",
-        position: "Front-end Developer",
+        position: "SDE-2",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwrhog5q89",
         name: "Emma Watson",
         email: "eafdx@gmail.com",
         phone: "7705332884",
-        position: "Product Designer",
+        position: "Team Lead",
         department: "Design",
+        level: 2
     },
     {
         employee_id: "luwltbgb1dy",
-        name: "Oscar Wilde",
+        name: "John Smith ",
         email: "nyomi@gmail.com",
         phone: "0304838562",
         position: "Product Designer",
         department: "Design",
+        level: 3
     },
     {
         employee_id: "luw6txp5e6m",
         name: "Oscar Wilde",
         email: "shulp@gmail.com",
         phone: "7745030895",
-        position: "DevOps Engineer",
+        position: "SDE-2",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwqkob8oqm",
@@ -197,6 +194,7 @@ export const employee_db = [
         phone: "0401149832",
         position: "SDE-3",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwieytuf58",
@@ -205,6 +203,7 @@ export const employee_db = [
         phone: "3572321345",
         position: "UI/UX Designer",
         department: "Design",
+        level: 3
     },
     {
         employee_id: "luw7q2le7vb",
@@ -213,6 +212,7 @@ export const employee_db = [
         phone: "0096226498",
         position: "Team Lead",
         department: "Engineering",
+        level: 2
     },
     {
         employee_id: "luwq5705ah0",
@@ -221,14 +221,16 @@ export const employee_db = [
         phone: "1865448557",
         position: "SDE-1",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwqw1wc8hz",
-        name: "Sharik",
+        name: "Justin",
         email: "lrqgv@gmail.com",
         phone: "0104299166",
         position: "Team Lead",
         department: "Engineering",
+        level: 2
     },
     {
         employee_id: "luw5m6574nq",
@@ -237,6 +239,7 @@ export const employee_db = [
         phone: "2094956115",
         position: "Team Lead",
         department: "Engineering",
+        level: 2
     },
     {
         employee_id: "luwrg1etbw7",
@@ -245,38 +248,43 @@ export const employee_db = [
         phone: "0766493614",
         position: "Team Lead",
         department: "Engineering",
+        level: 2
     },
     {
         employee_id: "luw4el2azpo",
         name: "Isabella Bird",
         email: "snvre@gmail.com",
         phone: "7689539903",
-        position: "HR Manager",
+        position: "Team Lead",
         department: "HR",
+        level: 2
     },
     {
         employee_id: "luws9u3br79",
         name: "Henry Ford",
         email: "fisae@gmail.com",
         phone: "5079578383",
-        position: "Backend Developer",
+        position: "SDE-2",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwrle94yht",
         name: "Liam Neeson",
         email: "mlriu@gmail.com",
         phone: "0379503602",
-        position: "Front-end Developer",
+        position: "SDE-1",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luwt1p43lj7",
-        name: "James Joyce",
+        name: "James ",
         email: "vrwti@gmail.com",
         phone: "5807300836",
         position: "SDE-2",
         department: "Engineering",
+        level: 3
     },
     {
         employee_id: "luw4qktda47",
@@ -285,6 +293,7 @@ export const employee_db = [
         phone: "0187175203",
         position: "UI/UX Designer",
         department: "Design",
+        level: 3
     },
     {
         employee_id: "luwhk7wqflx",
@@ -293,21 +302,51 @@ export const employee_db = [
         phone: "2308465645",
         position: "Head of Engineering",
         department: "Engineering",
+        level: 1
     },
     {
         employee_id: "luw5n2ph9c",
         name: "Thomas Edison",
         email: "jhggf@gmail.com",
         phone: "9545345430",
-        position: "ER Manager",
+        position: "HR Manager",
         department: "HR",
+        level: 3
     },
     {
         employee_id: "luw4el2azps",
         name: "Stephen Bird",
         email: "rtyuj@yahoo.com",
         phone: "7689539903",
-        position: "ER Manager",
+        position: "HR Manager",
         department: "HR",
+        level: 3
+    },
+    {
+        employee_id: "luw5n2ph9d",
+        name: "Peterson",
+        email: "peterson@gmail.com",
+        phone: "6454353435",
+        position: "HR Manager",
+        department: "HR",
+        level: 3
+    },
+    {
+        employee_id: "luw5n2ph9e",
+        name: "James",
+        email: "james@outlook.com",
+        phone: "6451353435",
+        position: "HR Manager",
+        department: "HR",
+        level: 3
+    },
+    {
+        employee_id: "luw5n2ph9f",
+        name: "Emily Johnson",
+        email: "emily.johnson@.com",
+        phone: "6454353435",
+        position: "Team Lead",
+        department: "HR",
+        level: 2
     }
 ];
