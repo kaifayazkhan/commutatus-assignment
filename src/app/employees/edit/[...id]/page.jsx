@@ -33,7 +33,7 @@ export default function UpdateEmployee() {
         resolver: zodResolver(employeeSchema),
     });
 
-    const selectedLevel = watch("level");
+    const selectedLevel = parseInt(watch("level"));
     const selectedDepartment = watch("department");
 
     const filteredPositions = filterPositionsByLevelAndDepartment(
@@ -53,7 +53,7 @@ export default function UpdateEmployee() {
                 name: newEmployee.name,
                 email: newEmployee.email,
                 phone: newEmployee.phone,
-                level: newEmployee.level,
+                level: newEmployee.level.toString(),
                 position: newEmployee.position,
                 department: newEmployee.department,
             });

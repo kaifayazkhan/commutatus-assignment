@@ -11,10 +11,7 @@ export const employeeSchema = z.object({
         .nonempty("Phone number is required")
         .min(10, { message: "Phone number can't be less than 10 digits" })
         .max(10, { message: "Phone number can't be more than 10 digits" }),
-    level: z
-        .string()
-        .nonempty("Select Level")
-        .transform((value) => parseInt(value, 10)),
+    level: z.string().nonempty("Select level"),
     position: z.string().nonempty("Position is required"),
     department: z.string().nonempty("Department is required"),
 });
