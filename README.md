@@ -9,6 +9,7 @@ The Hierarchy UI assignment is a project developed to create a hierarchical user
 - Team Operations: Create, edit, and change teams.
 - Filtering: Filter employees by name, phone number, and email.
 - Drag and Drop: Change the team of a team member within same department with drag and drop functionality
+- Debouncing: For avoiding unnecessary search
 
 ## Bonus Points Achieved
 - Preventing Duplicate Teams: Implemented validation to prevent duplicate team names.
