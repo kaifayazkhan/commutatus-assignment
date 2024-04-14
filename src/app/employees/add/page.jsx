@@ -39,7 +39,7 @@ export default function AddEmployee() {
             toast.error("Employee with this email already exists");
             return;
         }
-        if (employees.find(emp => emp.position === updatedData.position)) {
+        if (employees.find(emp => emp.position === updatedData.position && emp.level === 1)) {
             toast.error(`${updatedData.position} is already exist.`);
             return;
         }
