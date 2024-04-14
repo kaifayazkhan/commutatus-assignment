@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Link from "next/link";
 
 import TableHeader from "./TableHeader";
@@ -8,8 +8,7 @@ import Filter from "./Filter";
 import Loader from "../Loader";
 
 import useDebounce from "@/hooks/useDebounce";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchEmployees } from "@/store/slices/employeeSlice";
+import useEmployeesData from "@/hooks/useEmployeesData";
 
 const employeeCols = [
     "ID",
@@ -22,10 +21,7 @@ const employeeCols = [
 ];
 
 const EmployeeTable = () => {
-    const employees = useSelector((state) => state.employees.list);
-    const employeeStatus = useSelector((state) => state.employees.status)
-
-    const dispatch = useDispatch();
+    const employees = useEmployeesData();
 
     const [filterOptions, setFilterOptions] = useState({
         name: "",
@@ -33,18 +29,14 @@ const EmployeeTable = () => {
         phone: "",
     });
 
-    useEffect(() => {
-        if (employeeStatus === 'idle') {
-            dispatch(fetchEmployees());
-        }
-    }, [employeeStatus, dispatch]);
-
+    //Debounce search terms
     const debouncedFilterOptions = {
         name: useDebounce(filterOptions.name, 300),
         email: useDebounce(filterOptions.email, 300),
         phone: useDebounce(filterOptions.phone, 300),
     };
 
+    //Function to update filter search terms
     const handleFilterChange = useCallback(
         (field, value) => {
             if (value !== filterOptions[field]) {
@@ -56,6 +48,8 @@ const EmployeeTable = () => {
         },
         [filterOptions]
     );
+
+    //Filter employees based on search terms
     const filteredEmployees = employees?.filter(
         (employee) =>
             (debouncedFilterOptions.name === "" ||
