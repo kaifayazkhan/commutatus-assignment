@@ -79,6 +79,7 @@ const EmployeeTable = () => {
                 <Link
                     className="`w-full  h-12 py-1 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg drop-shadow-lg flex justify-center items-center gap-1 "
                     href="/employees/add"
+                    aria-label="Add new employee"
                 >
                     Add New Employee
                 </Link>

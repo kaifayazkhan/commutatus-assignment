@@ -65,8 +65,8 @@ export default function Team({ teamId, departmentId }) {
                     {team?.name}
                 </h3>
                 <div className="flex justify-between items-center gap-4">
-                    <Link href={`/dashboard/team/edit/${teamId}?depId=${departmentId}`} className='hover:text-blue-500'>Edit Team</Link>
-                    <button onClick={() => handleDelete(teamId, departmentId)} className="hover:text-red-500">Delete Team</button>
+                    <Link href={`/dashboard/team/edit/${teamId}?depId=${departmentId}`} aria-label='Edit team' className='hover:text-blue-500'>Edit Team</Link>
+                    <button onClick={() => handleDelete(teamId, departmentId)} className="hover:text-red-500" aria-label='Delete team'>Delete Team</button>
                 </div>
             </div>
             <div className={`ml-8 overflow-hidden ${isOpen ? "h-auto py-2" : "h-0"} transition-all duration-300 space-y-2`} onDragOver={handleDragOver} onDrop={handleDrop}>

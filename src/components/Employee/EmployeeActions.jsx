@@ -8,12 +8,14 @@ export default function EmployeeActions({ employeeId, onConfirmDelete }) {
             <Link
                 href={`/employees/edit/${employeeId}`}
                 className="text-blue-500 hover:text-blue-700 focus:outline-none"
+                aria-label="Edit employee"
             >
                 <FaEdit />
             </Link>
             <button
                 className="text-red-500 hover:text-red-700 focus:outline-none"
                 onClick={onConfirmDelete}
+                aria-label="Delete employee"
             >
                 <FaTrash />
             </button>

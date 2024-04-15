@@ -15,7 +15,7 @@ export default function Department({ department }) {
                 <h2 className="text-xl text-nowrap font-semibold cursor-pointer hover:underline underline-offset-8 transition-all duration-300" onClick={() => setIsOpen(!isOpen)}>
                     {employeeDetail?.name} - {department.position}
                 </h2>
-                <Link href={`/dashboard/team/add?id=${department.id}`}>Add Team</Link>
+                <Link href={`/dashboard/team/add?id=${department.id}`} aria-label='Add new team'>Add Team</Link>
             </div>
             <div className={`ml-8 ${isOpen ? "h-auto" : "h-0"} transition-all duration-300 `}>
                 {department?.teams?.map(teamId => (
