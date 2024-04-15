@@ -11,6 +11,7 @@ The Hierarchy UI assignment is a project developed to create a hierarchical user
 - Drag and Drop: Change the team of a team member within same department with drag and drop functionality
 - Debouncing: For avoiding unnecessary search
 
+## Change team demo
 ![Watch Drag and Drop preview](/public/drag-and-drop-output.gif)
 
 ## Bonus Points Achieved
